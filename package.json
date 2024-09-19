@@ -2,7 +2,7 @@
   "name": "olxapi",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
     "build": "tsup src",
     "dev": "tsx watch --env-file .env src/server.ts"
