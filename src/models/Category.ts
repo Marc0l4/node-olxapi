@@ -13,6 +13,6 @@ const schema = new Schema<CategoryType>({
 const modelName: string = 'Categorie';
 
 export default (connection && connection.models[modelName]) ?
-    module.exports = connection.models[modelName] as Model<CategoryType>
-:
-    module.exports = model(modelName, schema)
+    connection.models[modelName] as Model<CategoryType>
+    :
+    model(modelName, schema)

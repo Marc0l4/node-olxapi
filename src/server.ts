@@ -1,10 +1,10 @@
 import dotenv from "dotenv";
-import express, { Request, Response } from "express";
-import mongoose from 'mongoose';
+import express from "express";
 import cors from 'cors';
-import fileupload from 'express-fileupload';
 import { mongoConnect } from "./database/mongo";
 import router from "./routes/routes";
+import path from "path";
+import upload from './configs/multer';
 
 dotenv.config();
 
@@ -14,9 +14,11 @@ mongoConnect()
 server.use(cors());
 server.use(express.json());
 server.use(express.urlencoded({ extended: true }));
-server.use(fileupload());
+server.use(upload.array('image'))
+server.use('/assets/images', express.static(path.join(__dirname, "../public/assets/images")));
+server.use('/assets', express.static(path.join(__dirname, "../public/assets")));
 
-server.use(express.static(__dirname+'/public'));
+server.use(express.static(__dirname + '/public'));
 
 server.use('/', router);
 

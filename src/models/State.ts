@@ -1,7 +1,7 @@
 import { Schema, model, Model, connection } from "mongoose";
 
 type StateType = {
-    name: String
+    name: string
 }
 
 const schema = new Schema<StateType>({
